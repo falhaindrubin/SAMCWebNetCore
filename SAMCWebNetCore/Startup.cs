@@ -9,6 +9,10 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.EntityFrameworkCore;
+using SAMCWebNetCore.Models;
+using MySql.Data.EntityFrameworkCore;
+using MySql.Data.EntityFrameworkCore.Extensions;
 
 namespace SAMCWebNetCore
 {
@@ -33,6 +37,12 @@ namespace SAMCWebNetCore
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+
+            services.AddDbContext<SAMCWebNetCoreContext>(options =>
+                    options.UseSqlServer(Configuration.GetConnectionString("SAMCWebNetCoreContext")));
+
+            services.AddDbContext<ApplicationDbContext>(options =>
+                    options.UseMySQL(Configuration.GetConnectionString("DefaultConnection")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
