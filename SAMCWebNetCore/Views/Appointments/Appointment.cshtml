@@ -1,0 +1,39 @@
+﻿@model IEnumerable<SAMCWebNetCore.Models.Appointment>
+@{
+    ViewBag.Title = "Appointment";
+}
+
+<h2>Appointment</h2>
+<table class="table">
+    <tr>
+        <th>AppointmentID</th>
+        <th>EmpID</th>
+        <th>EmpName</th>
+        <th>CustomerID</th>
+        <th>CustomerName</th>        
+        <th>AppointmentTime</th>        
+        <th>CreatedBy</th>
+        <th>DateCreated</th>
+        <th>ModifiedBy</th>
+        <th>DateModified</th>
+    </tr>
+    <tr>
+        @foreach (var Item in Model)
+        {
+            <td>@Html.DisplayFor(modelItem => Item.AppointmentID)</td>
+            <td>@Html.DisplayFor(modelItem => Item.EmpID)</td>
+            <td>@Html.DisplayFor(modelItem => Item.EmpName)</td>
+            <td>@Html.DisplayFor(modelItem => Item.CustomerID)</td>
+            <td>@Html.DisplayFor(modelItem => Item.CustomerName)</td>           
+            <td>@Html.DisplayFor(modelItem => Item.AppointmentTime)</td>            
+            <td>@Html.DisplayFor(modelItem => Item.CreatedBy)</td>
+            <td>@Html.DisplayFor(modelItem => Item.DateCreated)</td>
+            <td>@Html.DisplayFor(modelItem => Item.ModifiedBy)</td>
+            <td>@Html.DisplayFor(modelItem => Item.DateModified)</td>
+        }
+    </tr>
+</table>
+
+@*
+    For more information on enabling MVC for empty projects, visit http://go.microsoft.com/fwlink/?LinkID=397860
+*@

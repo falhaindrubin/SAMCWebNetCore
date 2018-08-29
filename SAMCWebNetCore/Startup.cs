@@ -11,8 +11,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using SAMCWebNetCore.Models;
-using MySql.Data.EntityFrameworkCore;
-using MySql.Data.EntityFrameworkCore.Extensions;
+//using Pomelo.EntityFrameworkCore;
+//using MySql.Data.EntityFrameworkCore;
+//using MySql.Data.EntityFrameworkCore.Extensions;
 
 namespace SAMCWebNetCore
 {
@@ -37,12 +38,13 @@ namespace SAMCWebNetCore
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.Add(new ServiceDescriptor(typeof(AppointmentContext), new AppointmentContext(Configuration.GetConnectionString("DefaultConnection"))));
 
-            services.AddDbContext<SAMCWebNetCoreContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("SAMCWebNetCoreContext")));
+            //services.AddDbContext<SAMCWebNetCoreContext>(options =>
+            //        options.UseSqlServer(Configuration.GetConnectionString("SAMCWebNetCoreContext")));
 
-            services.AddDbContext<ApplicationDbContext>(options =>
-                    options.UseMySQL(Configuration.GetConnectionString("DefaultConnection")));
+            //services.AddDbContext<SAMCWebNetCoreContext>(options =>
+            //        options.UseMySql(Configuration.GetConnectionString("DefaultConnection")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
