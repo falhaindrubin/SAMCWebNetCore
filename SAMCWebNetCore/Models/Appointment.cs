@@ -12,10 +12,7 @@ namespace SAMCWebNetCore.Models
         public string EmpName { get; set; }
         public string CustomerID { get; set; }
         public string CustomerName { get; set; }
-        //public string PetID { get; set; }
-        //public string PetName { get; set; }
         public DateTime AppointmentTime { get; set; }
-        //public string AppointmentDesc { get; set; }
         public string CreatedBy { get; set; }
         public DateTime DateCreated { get; set; }
         public string ModifiedBy { get; set; }
