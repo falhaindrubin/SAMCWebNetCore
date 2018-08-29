@@ -6,11 +6,6 @@
 
   <ItemGroup>
     <Compile Remove="Controllers\A_ppointmentsController.cs" />
-    <Compile Remove="Data\SAMCWebNetCoreContext.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Content Remove="Views\Appointments\Appointment.cshtml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -18,6 +13,7 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="2.1.2" />
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.3" />
     <PackageReference Include="MySql.Data" Version="8.0.12" />
+    <PackageReference Include="MySql.Data.EntityFrameworkCore" Version="8.0.12" />
   </ItemGroup>
 
 </Project>
