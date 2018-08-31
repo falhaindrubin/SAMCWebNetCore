@@ -5,7 +5,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Data\**" />
+    <Compile Remove="Migrations\**" />
+    <Content Remove="Data\**" />
+    <Content Remove="Migrations\**" />
+    <EmbeddedResource Remove="Data\**" />
+    <EmbeddedResource Remove="Migrations\**" />
+    <None Remove="Data\**" />
+    <None Remove="Migrations\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Compile Remove="Controllers\A_ppointmentsController.cs" />
+    <Compile Remove="Models\ApplicationUser.cs" />
   </ItemGroup>
 
   <ItemGroup>

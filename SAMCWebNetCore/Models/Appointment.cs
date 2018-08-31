@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 namespace SAMCWebNetCore.Models
 {
     public class Appointment
-    {
+    {        
         public string AppointmentID { get; set; }
         public string EmpID { get; set; }
         public string EmpName { get; set; }
@@ -17,5 +17,23 @@ namespace SAMCWebNetCore.Models
         public DateTime DateCreated { get; set; }
         public string ModifiedBy { get; set; }
         public DateTime DateModified { get; set; }
+
+    //AppointmentID, 
+	//PetID, 
+	//PetName, 
+	//PetDOB, 
+	//SexCode, 
+	//SexName, 
+	//AnimalTypeCode, 
+	//AnimalTypeName, 
+	//BreedCode, 
+	//BreedName, 
+	//StatusCode, 
+	//StatusName, 
+	//AppointmentDesc, 
+	//CreatedBy, 
+	//DateCreated, 
+	//ModifiedBy, 
+	//DateModified
     }
 }

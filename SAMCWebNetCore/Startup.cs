@@ -11,7 +11,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
 using SAMCWebNetCore.Models;
-using SAMCWebNetCore.Data;  
+//using SAMCWebNetCore.Data;  
 //using Pomelo.EntityFrameworkCore;
 using MySql.Data.EntityFrameworkCore;
 using MySql.Data.EntityFrameworkCore.Extensions;
@@ -38,11 +38,10 @@ namespace SAMCWebNetCore
             });
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.Add(new ServiceDescriptor(typeof(AppointmentContext), new AppointmentContext(Configuration.GetConnectionString("DefaultConnection"))));
 
-            //services.Add(new ServiceDescriptor(typeof(AppointmentContext), new AppointmentContext(Configuration.GetConnectionString("DefaultConnection"))));
-
-            services.AddDbContext<ApplicationDbContext>(options =>
-                    options.UseMySQL(Configuration.GetConnectionString("DefaultConnection")));
+            //services.AddDbContext<ApplicationDbContext>(options =>
+            //        options.UseMySQL(Configuration.GetConnectionString("DefaultConnection")));
 
         }
 
