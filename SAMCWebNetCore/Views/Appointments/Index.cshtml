@@ -1,119 +1,113 @@
-﻿@model SAMCWebNetCore.Models.Customer
+﻿@model IEnumerable<SAMCWebNetCore.Models.Appointment>
 
-<h4>Customer</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Index">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="CustomerID" class="control-label"></label>
-                <input asp-for="CustomerID" class="form-control" />
-                <span asp-validation-for="CustomerID" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="SaluteCode" class="control-label"></label>
-                <input asp-for="SaluteCode" class="form-control" />
-                <span asp-validation-for="SaluteCode" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="SaluteName" class="control-label"></label>
-                <input asp-for="SaluteName" class="form-control" />
-                <span asp-validation-for="SaluteName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="CustomerName" class="control-label"></label>
-                <input asp-for="CustomerName" class="form-control" />
-                <span asp-validation-for="CustomerName" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="NRICPassportNo" class="control-label"></label>
-                <input asp-for="NRICPassportNo" class="form-control" />
-                <span asp-validation-for="NRICPassportNo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="AddressLine1" class="control-label"></label>
-                <input asp-for="AddressLine1" class="form-control" />
-                <span asp-validation-for="AddressLine1" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="AddressLine2" class="control-label"></label>
-                <input asp-for="AddressLine2" class="form-control" />
-                <span asp-validation-for="AddressLine2" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="AddressLine3" class="control-label"></label>
-                <input asp-for="AddressLine3" class="form-control" />
-                <span asp-validation-for="AddressLine3" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="AddressLine4" class="control-label"></label>
-                <input asp-for="AddressLine4" class="form-control" />
-                <span asp-validation-for="AddressLine4" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="TelNo" class="control-label"></label>
-                <input asp-for="TelNo" class="form-control" />
-                <span asp-validation-for="TelNo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="MobileNo" class="control-label"></label>
-                <input asp-for="MobileNo" class="form-control" />
-                <span asp-validation-for="MobileNo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Email" class="control-label"></label>
-                <input asp-for="Email" class="form-control" />
-                <span asp-validation-for="Email" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Postcode" class="control-label"></label>
-                <input asp-for="Postcode" class="form-control" />
-                <span asp-validation-for="Postcode" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="City" class="control-label"></label>
-                <input asp-for="City" class="form-control" />
-                <span asp-validation-for="City" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="State" class="control-label"></label>
-                <input asp-for="State" class="form-control" />
-                <span asp-validation-for="State" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Country" class="control-label"></label>
-                <input asp-for="Country" class="form-control" />
-                <span asp-validation-for="Country" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="CreatedBy" class="control-label"></label>
-                <input asp-for="CreatedBy" class="form-control" />
-                <span asp-validation-for="CreatedBy" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="DateCreated" class="control-label"></label>
-                <input asp-for="DateCreated" class="form-control" />
-                <span asp-validation-for="DateCreated" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ModifiedBy" class="control-label"></label>
-                <input asp-for="ModifiedBy" class="form-control" />
-                <span asp-validation-for="ModifiedBy" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="DateModified" class="control-label"></label>
-                <input asp-for="DateModified" class="form-control" />
-                <span asp-validation-for="DateModified" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
-        </form>
-    </div>
-</div>
+@{
+    ViewBag.Title = "Index";
+}
+
+@* Html.BeginForm is used to add a form in an Html document *@
+@* Pass the action name in the first parameter, controller name in the second parameter and specify the form request type as get *@
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    @using (Html.BeginForm("Index", "Home", FormMethod.Get))
+    {
+        //The following are the search fields/options
+        <table>
+            <tr>
+                <td>
+                    <b> Search Option: </b>
+                </td>
+                <td>
+                    @Html.RadioButton("option", "Name") <text>NRIC/Passport No.</text>
+                    @Html.RadioButton("option", "Gender") <text>Customer Name</text>
+                </td>
+                <td>
+                    @Html.TextBox("search")<input type="submit" name="submit" value="Search" />
+                </td>
+            </tr>
+        </table>
+    }
 </div>
 
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.AppointmentID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmpID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.EmpName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CustomerID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CustomerName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AppointmentTime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedBy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateCreated)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ModifiedBy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DateModified)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AppointmentID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmpID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmpName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CustomerID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CustomerName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AppointmentTime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreatedBy)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateCreated)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ModifiedBy)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateModified)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                    @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

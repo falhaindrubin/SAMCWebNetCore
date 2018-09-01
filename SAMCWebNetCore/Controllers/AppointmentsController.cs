@@ -12,21 +12,10 @@ namespace SAMCWebNetCore.Controllers
         AppointmentContext ObjAppointment = new AppointmentContext();
         CustomerContext ObjCustomer = new CustomerContext();
 
-        public IActionResult Index([Bind] Customer customer)
+        public IActionResult Index()
         {
-            //AppointmentContext context = HttpContext.RequestServices.GetService(typeof(SAMCWebNetCore.Models.AppointmentContext)) as AppointmentContext;
-            //return View(context.GetAllAppointments());
-
-            //CustomerContext context = HttpContext.RequestServices.GetService(typeof(SAMCWebNetCore.Models.CustomerContext)) as CustomerContext;
-            //return View(context.SearchCustomer());
-
-            if (ModelState.IsValid)
-            {
-                ObjCustomer.SearchCustomer(customer);
-                return RedirectToAction("Index");
-            }
-
-            return View(customer);
+            AppointmentContext context = HttpContext.RequestServices.GetService(typeof(SAMCWebNetCore.Models.AppointmentContext)) as AppointmentContext;
+            return View(context.GetAllAppointments());
         }
 
         [HttpGet]
